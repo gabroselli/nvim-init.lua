@@ -601,12 +601,12 @@ require("lazy").setup({
 					-- `friendly-snippets` contains a variety of premade snippets.
 					--    See the README about individual language/framework/plugin snippets:
 					--    https://github.com/rafamadriz/friendly-snippets
-					-- {
-					--   'rafamadriz/friendly-snippets',
-					--   config = function()
-					--     require('luasnip.loaders.from_vscode').lazy_load()
-					--   end,
-					-- },
+					{
+						"rafamadriz/friendly-snippets",
+						config = function()
+							require("luasnip.loaders.from_vscode").lazy_load()
+						end,
+					},
 				},
 			},
 			"saadparwaiz1/cmp_luasnip",
@@ -810,11 +810,25 @@ require("lazy").setup({
 			require("lualine").setup({})
 		end,
 	},
+	-- Git Blame
 	{
 		"FabijanZulj/blame.nvim",
 		config = function()
 			require("blame").setup()
 		end,
+	},
+	{
+		"goolord/alpha-nvim",
+		config = function()
+			require("alpha").setup(require("alpha.themes.dashboard").config)
+		end,
+	},
+	-- Bufferline
+	{
+		"akinsho/bufferline.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
 	},
 	-- end of plugins
 }, {
