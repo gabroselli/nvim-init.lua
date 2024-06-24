@@ -278,13 +278,26 @@ require("lazy").setup({
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
 					},
+					file_browser = {
+						-- theme = "ivy",
+						-- disables netrw and use telescope-file-browser in its place
+						hijack_netrw = false,
+						mappings = {
+							["i"] = {
+								-- your custom insert mode mappings
+							},
+							["n"] = {
+								-- your custom normal mode mappings
+							},
+						},
+					},
 				},
 			})
 
 			-- Enable Telescope extensions if they are installed
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")
-
+			pcall(require("telescope").load_extension, "file_browser")
 			-- See `:help telescope.builtin`
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
@@ -297,6 +310,9 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+			vim.keymap.set("n", "<space>fb", function()
+				require("telescope").extensions.file_browser.file_browser()
+			end)
 			-- Slightly advanced example of overriding default behavior and theme
 			vim.keymap.set("n", "<leader>/", function()
 				-- You can pass additional configuration to Telescope to change the theme, layout, etc.
@@ -321,6 +337,8 @@ require("lazy").setup({
 			end, { desc = "[S]earch [N]eovim files" })
 		end,
 	},
+
+	{ "nvim-telescope/telescope-file-browser.nvim" },
 
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
