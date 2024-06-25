@@ -825,7 +825,19 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("lualine").setup({})
+			require("lualine").setup({
+				options = {
+					theme = "dracula",
+					sections = {
+						lualine_a = {},
+						lualine_b = {},
+						lualine_c = { require("tabline").tabline_buffers },
+						lualine_x = { require("tabline").tabline_tabs },
+						lualine_y = {},
+						lualine_z = {},
+					},
+				},
+			})
 		end,
 	},
 	-- Git Blame
@@ -841,12 +853,12 @@ require("lazy").setup({
 			require("alpha").setup(require("alpha.themes.dashboard").config)
 		end,
 	},
-	-- Bufferline
 	{
-		"akinsho/bufferline.nvim",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
+		"kdheepak/tabline.nvim",
+		config = function()
+			require("tabline").setup()
+		end,
+		requires = { "hoob3rt/lualine.nvim", "kyazdani42/nvim-web-devicons" },
 	},
 	-- end of plugins
 }, {
