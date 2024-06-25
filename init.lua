@@ -860,6 +860,12 @@ require("lazy").setup({
 		end,
 		requires = { "hoob3rt/lualine.nvim", "kyazdani42/nvim-web-devicons" },
 	},
+	{
+		"pteroctopus/faster.nvim",
+		config = function()
+			require("faster").setup()
+		end,
+	},
 	-- end of plugins
 }, {
 	ui = {
