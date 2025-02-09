@@ -5,7 +5,7 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-buffer", -- source for text in buffer
 		"hrsh7th/cmp-path", -- source for file system paths
-		"hrs7th/cmp-nvim-lsp", -- source for LSP completions
+		"hrsh7th/cmp-nvim-lsp", -- source for LSP completions
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
